@@ -27,7 +27,6 @@ class Migration:
             ('full', orm['news.Element:full']),
             ('link', orm['news.Element:link']),
             ('source', orm['news.Element:source']),
-            ('is_published', orm['news.Element:is_published']),
         ))
         db.send_create_signal('news', ['Element'])
         
@@ -48,7 +47,6 @@ class Migration:
             'date': ('django.db.models.fields.DateTimeField', [], {}),
             'full': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_published': ('django.db.models.fields.BooleanField', [], {'default': 'True', 'blank': 'True'}),
             'link': ('django.db.models.fields.URLField', [], {'max_length': '500'}),
             'source': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['news.Source']"}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '200'})

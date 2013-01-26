@@ -11,9 +11,6 @@ class Migration(SchemaMigration):
         # Adding index on 'Source', fields ['is_alive']
         db.create_index('news_source', ['is_alive'])
 
-        # Deleting field 'element.is_published'
-        db.delete_column('news_element', 'is_published')
-
         # Adding field 'Element.slug'
         db.add_column('news_element', 'slug',
                       self.gf('django.db.models.fields.SlugField')(default=1, max_length=200),
@@ -41,11 +38,6 @@ class Migration(SchemaMigration):
 
         # Removing index on 'Source', fields ['is_alive']
         db.delete_index('news_source', ['is_alive'])
-
-        # Adding field 'element.is_published'
-        db.add_column('news_element', 'is_published',
-                      self.gf('django.db.models.fields.BooleanField')(default=True, blank=True),
-                      keep_default=False)
 
         # Deleting field 'Element.slug'
         db.delete_column('news_element', 'slug')
