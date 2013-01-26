@@ -7,6 +7,5 @@ django-debug-toolbar==0.9.4
 django-pagination==1.0.7
 django-robots==0.9.1
 google-analytics==0.2
-pytils==0.2.3
 pytz==2012j
 sorl-thumbnail==11.12
