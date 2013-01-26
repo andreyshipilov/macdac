@@ -1,0 +1,30 @@
+{% extends "news/month.html" %}
+{% load pagination_tags %}
+
+
+
+{% block title %}{{ current_source.title }}, {{ day|date:"d E"|lower }} {{ day.year }}-го года{% endblock %}
+
+
+{% block top_header %}
+	<a href="{{ current_source.get_absolute_url }}">{{ current_source.title|safe }}</a><span> &bull; </span>
+	<a href="{% url news_year current_source.slug day.year %}">{{ day.year }}</a><span> &bull; </span>
+	<a href="{% url news_month current_source.slug day.year month %}">{{ day|date:"F" }}</a><span> &bull; </span>
+	<span>{{ day.day }}</span>
+{% endblock %}
+
+
+{% block next_link %}
+	{% autopaginate object_list %}
+	{% if page_obj.has_next %}
+		<link rel="next" href="?page={{ page_obj.next_page_number }}" id="next-link">
+	{% endif %}
+{% endblock %}
+
+
+{% block prev_link %}
+	{% autopaginate object_list %}
+	{% if page_obj.has_previous %}
+		<link rel="prev" href="?page={{ page_obj.previous_page_number }}" id="previous-link">
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,239 @@
+/* Common useful styles */
+.clear	{clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0;}
+.clearfix:before,
+.clearfix:after {content: '\0020'; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0;}
+.clearfix:after {clear: both;}
+.clearfix {zoom: 1;}
+.clear-top {margin-top: 0 !important}
+
+
+/* Project core styles */
+html {
+	font-size: 80%;
+	min-width: 900px;
+}
+body {
+	font: normal 1em Helvetica, Arial, sans-serif;
+}
+a {
+	color: #004dbb;
+}
+a:hover {
+	color: #fff !important;
+	background-color: #004dbb;
+	text-decoration: none;
+}
+p {
+	margin: 1em 0;
+}
+em {
+	font-style: italic;
+}
+h1 {
+	font: normal 2em Helvetica, Tahoma;
+	margin: 0.5em 0;
+	color: #333;
+}
+h2 {
+	font: normal 1.5em Helvetica, Tahoma;
+	margin: 0.5em 0;
+	color: #333;
+}
+
+
+/* Project styles */
+#steve-jobs-dob {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+#page {
+	max-width: 1600px;
+}
+	#top {
+		margin: 25px 50px;
+	}
+		#logo {
+			width: 63px;
+			height: 63px;
+			text-indent: -9999px;
+			background: url("/static/img/logo.gif") #fff;
+			float: left;
+			margin: 0 25px 0 0;
+		}
+		#logo a:hover {
+			background-color: #fff !important;
+		}
+		#top header {
+			color: #666;
+		}
+			#top header * {
+				line-height: 63px;
+			}
+			#top header h2 {
+				margin: 0;
+			}
+	#left-column {
+		float: left;
+		width: 70%;
+	}
+	#right-column {
+		float: left;
+		width: 30%;
+	}
+		#right-column-wrap {
+			margin-left: 25px;
+			margin-right: 25px;
+		}
+footer {
+	color: #666;
+	font-style: italic;
+}
+
+
+/* News Styles */
+#news-element {
+	position: relative;
+}
+	#news-element article {
+		padding: 1px 25px 1px 50px;
+		background: url("/static/img/news-element-odd-bg.gif") repeat -33% 33% #e7e7e7;
+	}
+	#after-element {
+		padding: 25px 25px 25px 50px;
+	}
+	#source-link {
+		background-color: #fff;
+		padding: 0.3em 0.5em;
+		float: left;
+		margin-left: -0.5em;
+		border-radius: 3px;
+		border: 1px solid #ddd;
+		color: #999;
+	}
+	#next-link-href,
+	#prev-link-href {
+		position: absolute;
+		top: 0;
+		padding: 0.25em;
+		background-color: #f06;
+		color: #fff;
+	}
+	#next-link-href {
+		left: 0;
+		border-bottom-right-radius: 3px;
+	}
+	#prev-link-href {
+		right: 0;
+		border-bottom-left-radius: 3px;
+	}
+#news-list {
+}
+	#news-list .news-element-odd {
+		background: url("/static/img/news-element-odd-bg.gif") repeat -33% 33% #e7e7e7;
+	}
+	#news-list .news-element-even {
+
+	}
+	#news-list article {
+		position: relative;
+		padding: 1px 25px 25px 50px;
+	}
+	#news-list article time {
+		display: none;
+	}
+	#news-list article header h1 {
+		margin: 0.5em 0;
+	}
+		#news-list article header h1 a {
+			color: #333;
+		}
+		#news-list article header h1 a:hover {
+			color: #004dbb !important;
+			background-color: inherit !important;
+			text-decoration: underline;
+		}
+		#news-list .header-prefix {
+			color: #fff;
+			background-color: #004dbb;
+			padding: 0 0.5em;
+			margin-left: -0.5em;
+			margin-right: 0.5em;
+			border-radius: 3px;
+		}
+		#news-list .header-prefix:hover {
+			background-color: inherit;
+			color: #004dbb !important;
+			text-decoration: underline;
+		}
+	#latest-news-indicator {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		padding: 0.25em 0.5em;
+		background-color: #f06;
+		color: #fff;
+		border-top-left-radius: 3px;
+	}
+#sources {
+	padding-bottom: 2em;
+}
+	#sources ul {
+		margin-bottom: 2em;
+	}
+		#sources ul li {
+			float: left;
+			padding: 0.1em 0.3em;
+			margin: 0 0.3em 0.3em 0;
+			font-size: 0.95em;
+			white-space: nowrap;
+			border-radius: 3px;
+			font-style: italic;
+		}
+		#sources ul li:hover {
+			background-color: #004dbb;
+		}
+		#sources ul li:hover a,
+		#sources ul li:hover .count {
+			color: #fff;
+			text-decoration: none;
+		}
+		#sources ul li.in,
+		#sources ul li.in a {
+			background-color: #004dbb !important;
+			color: #fff;
+			font-style: normal;
+		}
+		#sources ul .odd {
+			background-color: #f3f3f3;
+		}
+		#sources ul .even {
+			background-color: #dedede;
+		}
+			#sources ul .source {
+				font-size: 0.95em;
+				line-height: 1.8em;
+			}
+
+
+/* Pagination */
+#pagination {
+	margin-bottom: 2em;
+}
+	#pagination a {
+		font-style: italic;
+	}
+	#pagination  a:hover {
+		text-decoration:underline;
+	}
+	#pagination .page,
+	#pagination .next,
+	#pagination .prev {
+		padding: 0.2em 0.35em;
+	}
+	#pagination  .next {
+		margin-left: 0.5em;
+	}
+	#pagination  .prev {
+		margin-right: 0.5em;
+	}

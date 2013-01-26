@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load pagination_tags %}
+
+
+
+{% block title %}{{ current_source.title }}, {{ year }}-й год{% endblock %}
+
+
+{% block top_header %}
+	<a href="{{ current_source.get_absolute_url }}">{{ current_source.title|safe }}</a><span> &bull; </span>
+	<span>{{ year }}</span>
+{% endblock %}
+
+
+{% block left_column %}
+	{% autopaginate object_list %}
+
+	<section id="news-list">
+		{% for object in object_list %}
+			<article class="news-element-{% cycle "odd" "even" %}">
+				<time datetime="{{ object.date|date:"Y-m-d H:m" }}">{{ object.date|date:"j E Y, H:m" }}</time>
+
+				<header>
+					<h1 id="{{ object.pk }}">
+						<a href="{{ object.get_absolute_url }}">{{ object.title|striptags|safe }}</a>
+					</h1>
+				</header>
+
+				<div>{{ object.full|safe }}</div>
+			</article>
+		{% endfor %}
+	</section>
+{% endblock %}
+
+
+{% block next_link %}
+	{% autopaginate object_list %}
+	{% if page_obj.has_next %}
+		<link rel="next" href="?page={{ page_obj.next_page_number }}" id="next-link">
+	{% endif %}
+{% endblock %}
+
+
+{% block prev_link %}
+	{% autopaginate object_list %}
+	{% if page_obj.has_previous %}
+		<link rel="prev" href="?page={{ page_obj.previous_page_number }}" id="previous-link">
+	{% endif %}
+{% endblock %}

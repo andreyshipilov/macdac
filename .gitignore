@@ -1,0 +1,15 @@
+*.pyc
+*.pyo
+*.db
+*.mo
+*.po
+*.db
+.DS_Store
+.coverage
+local_settings.py
+live_settings.py
+fabfile.py
+uwsgi
+macdac/static/media
+macdac/static/admin
+macdac/static/min

@@ -1,0 +1,12 @@
+{% for object in object_list %}
+	<article class="news-element-{% cycle "odd" "even" %}"{% if forloop.last %} id="{{ object.pk }}"{% endif %}>
+		<time datetime="{{ object.date|date:"Y-m-d H:m" }}">{{ object.date|date:"j E Y, H:m" }}</time>
+		<header>
+			<h1 id="{{ object.pk }}">
+				<a href="{{ object.source.get_absolute_url }}" class="header-prefix">{{ object.source.title }}</a>
+				<a href="{{ object.get_absolute_url }}">{{ object.title|striptags|safe }}</a>
+			</h1>
+		</header>
+		<div>{{ object.full|safe }}</div>
+	</article>
+{% endfor %}

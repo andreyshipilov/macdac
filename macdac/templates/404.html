@@ -1,0 +1,52 @@
+{% load i18n %}
+
+<!-- White Space Studio | http://www.whitespace.ru/ -->
+<html>
+<head>
+	<title>{% trans "Macduck" %} - {% trans "Not found" %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}reset.css">
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css.css">
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/news/">
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+</head>
+<body>
+<table width="100%" height="100%" class="valign-middle">
+<tr>
+	<td width="50%"></td>
+	<td class="valign-middle" style="padding:0 0 0 15px;">
+		<a href="/"><img src="{{ MEDIA_URL }}logo.gif" class="logo" style="margin-left:-15px" alt="{% trans "Macduck" %} - {% trans "News about Apple, MacBook and Mac Pro, Mac OS X, iPhone and iPod." %}"></a>
+		{% blocktrans %}<h1>Oops!</h1><p>No page for you here. Go <a href="/">back</a> immediately!</p>{% endblocktrans %}
+		<!-- div class="google-search" style="margin-left:0">
+			<form action="/search/" id="cse-search-box">
+				<div>
+					<input type="hidden" name="cx" value="partner-pub-2688584579957265:85o9ub-2y1z" />
+					<input type="hidden" name="cof" value="FORID:9" />
+					<input type="hidden" name="ie" value="utf-8" />
+					<input type="text" name="q" size="31" />
+					<input type="submit" name="sa" value="&#x041f;&#x043e;&#x0438;&#x0441;&#x043a;" />
+				</div>
+			</form>
+			<script type="text/javascript" src="http://www.google.ru/coop/cse/brand?form=cse-search-box&amp;lang=ru"></script>
+		</div -->
+	</td>
+	<td width="50%"></td>
+</tr>
+</table>
+<del class="noindex"><![CDATA[<noindex>]]></del>
+	<div style="position:absolute; top:-100px;">
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			try {var pageTracker = _gat._getTracker("UA-791865-6");pageTracker._trackPageview();} catch(err) {}
+		</script>
+		<!--LiveInternet counter-->
+			<script type="text/javascript">document.write("<a href='http://www.liveinternet.ru/click' target=_blank><img src='http://counter.yadro.ru/hit?t25.6;r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u" + escape(document.URL) +";i" + escape("Жж"+document.title.substring(0,80)) + ";" + Math.random() + "'><\/a>")</script>
+		<!--/LiveInternet-->
+	</div>
+<del class="noindex"><![CDATA[</noindex>]]></del>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<section id="sources">
+	<header>
+		<h2 class="clear-top">Откуда новости берутся</h2>
+	</header>
+
+	<ul class="clearfix">
+		{% for source in alive %}
+			<li class="{% ifequal source.slug current_source.slug %}in {% endifequal%}{% cycle "odd" "even" %}">
+				<span class="source">
+					{% if is_source_page and source.slug == current_source.slug %}
+						<span>{{ source.title }}</span>
+					{% else %}
+						<a href="{{ source.get_absolute_url }}">{{ source.title }}</a>
+					{% endif %}
+					<span class="count"> {{ source.count }}</span>
+				</span>
+			</li>
+		{% endfor%}
+	</ul>
+
+	<header>
+		<h2>Откуда новости <em>не&nbsp;берутся</em></h2>
+	</header>
+
+	<ul class="clearfix">
+		{% for source in dead %}
+			<li class="{% cycle "odd" "even" %}">
+				<span class="source">
+					{% if is_source_page and source.slug == current_source.slug %}
+						<span>{{ source.title }}</span>
+					{% else %}
+						<a href="{{ source.get_absolute_url }}">{{ source.title }}</a>
+					{% endif %}
+					<span class="count"> {{ source.count }}</span>
+				</span>
+			</li>
+		{% endfor%}
+	</ul>
+</section>

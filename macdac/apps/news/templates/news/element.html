@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}{{ object.title|safe }} — {{ object.source.title|safe }}{% endblock %}
+
+
+{% block head_addon %}
+	<script src="http://userapi.com/js/api/openapi.js?22"></script>
+	<script>VK.init({apiId: 1957212, onlyWidgets: true});</script>
+{% endblock %}
+
+
+{% block left_column %}
+	<section id="news-element">
+		<article>
+			<header>
+				<h1>{{ object.title|safe }}</h1>
+			</header>
+
+			<div>{{ object.full|linebreaks|safe }}</div>
+
+			{% if object.link %}
+				<p id="source-link">
+					<span>Текст новости взят с сайта «<a href="{{ object.link }}">{{ object.source.title}}</a>» в&nbsp;</span>
+					<time datetime="{{ object.date|date:"Y-m-d H:m" }}">{{ object.date|date:"H:m, j E Y" }}</time><span>.</span>
+				</p>
+				<div class="clear"></div>
+			{% endif %}
+		</article>
+
+		{% if object.get_next %}
+			<a href="{{ object.get_next.get_absolute_url }}" id="next-link-href">Ctrl&nbsp;&larr;</a>
+		{% endif %}
+
+		{% if object.get_previous %}
+			<a href="{{ object.get_previous.get_absolute_url }}" id="prev-link-href">Ctrl&nbsp;&rarr;</a>
+		{% endif %}
+
+		{% if object.allow_comments %}
+			<div id="after-element">
+				<h1>Комментарии</h1>
+
+				<div id="vk_comments"></div>
+				<script type="text/javascript">VK.Widgets.Comments("vk_comments", {limit: 100, width: "600"});</script>
+			</div>
+		{% endif %}
+
+		<div id="vk_like"></div>
+		<script type="text/javascript">VK.Widgets.Like("vk_like", {type: "mini", height: 20});</script>
+		<a name="fb_share" href="http://www.facebook.com/sharer.php" style="float: left; margin-top: 2px;">Поделиться</a>
+	</section>
+{% endblock %}
+
+
+{% block top_header %}
+	<a href="{{ current_source.get_absolute_url }}">{{ current_source.title|safe }}</a><span> &bull; </span>
+	<a href="{% url news_year current_source.slug object.date.year %}">{{ object.date.year }}</a><span> &bull; </span>
+	<a href="{% url news_month current_source.slug object.date.year month %}">{{ object.date|date:"F" }}</a><span> &bull; </span>
+	<a href="{% url news_day current_source.slug object.date.year month object.date.day %}">{{ object.date.day }}</a>
+{% endblock %}
+
+
+{% block next_link %}
+	{% if object.get_previous.get_absolute_url %}
+		<link rel="next" href="{{ object.get_previous.get_absolute_url }}" id="next-link">
+	{% endif %}
+{% endblock %}
+
+
+{% block prev_link %}
+	{% if object.get_next.get_absolute_url %}
+		<link rel="prev" href="{{ object.get_next.get_absolute_url }}" id="previous-link">
+	{% endif %}
+{% endblock %}

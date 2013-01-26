@@ -1,0 +1,98 @@
+{% load news_tags static i18n compress analytics %}{% spaceless %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>{% block title %}{% block main_title %}Макдак{% endblock %}. Новости Apple, MacBook и Mac Pro, Mac OS X, iPhone и iPod на одном сайте{% endblock %}</title>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<meta content="index,follow" name="robots" />
+	<meta name="google-site-verification" content="IXYuCWS7XNCxRZx2DZJlenlf6PNgU3UdF_hdZAdE__s" />
+	<meta name="yandex-verification" content="75d50e7d3b5496f3" />
+
+	{% compress css %}
+		<link href="{% static "css/reset.css" %}" rel="stylesheet" type="text/css" media="screen" />
+		<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="screen" />
+	{% endcompress %}
+
+	<link href="{% static "img/favicon.png" %}" rel="shortcut icon" type="image/x-icon" />
+	<link href="{% url rss_redirect %}" rel="alternate" type="application/rss+xml" title="RSS" />
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	{% compress js %}
+		{% block compressed_js %}
+			<script>window.jQuery || document.write('<script src="{% static "js/jquery.min.js" %}"><\/script>');</script>
+			<script type="text/javascript" src="{% static "js/jquery.endless-scroll.js" %}"></script>
+			<script type="text/javascript" src="{% static "js/jquery.cookie.js" %}"></script>
+			<script type="text/javascript" src="{% static "js/jquery.macdac.js" %}"></script>
+		{% endblock %}
+	{% endcompress %}
+
+	{% block prev_link %}{% endblock %}
+	{% block next_link %}{% endblock %}
+	{% block head_addon %}{% endblock %}
+</head>
+<body>
+	{% if jobs_dob %}
+		<img src="{% static "img/rip-steve.png" %}" alt="Rest in peace, Steve Jobs." id="steve-jobs-dob" />
+	{% endif %}
+
+	<div id="page" class="clearfix">
+		<div id="top" class="clearfix">
+			{% if not is_home %}
+				<a href="/">
+			{% endif %}
+
+			<h1 id="logo">
+				<span>Макдак - Новости Apple, MacBook и Mac Pro, Mac OS X, iPhone и iPod на одном сайте</span>
+			</h1>
+
+			{% if not is_home %}
+				</a>
+			{% endif %}
+
+			<header>
+				<h2>{% block top_header %}{% endblock %}</h2>
+			</header>
+		</div>
+
+		{% block all_content %}
+			<div id="left-column">
+				{% block left_column %}
+				{% endblock %}
+			</div>
+			<div id="right-column">
+				<div id="right-column-wrap">
+					{% block right_column %}
+						{% sources_list %}
+					{% endblock %}
+
+					<footer>
+						<p>
+							<i>
+								<span>&copy; 2007&mdash;{% now "Y" %} </span>
+								<span class="vcard">
+									<a class="url fn n" href="http://www.macdac.ru/" style="display: none;">http://www.macdac.ru/</a>
+									<span class="org">Макдак</span><span>.</span>
+									<a class="email" href="mailto:mail@macdac.ru" style="display: none;">Электронная почта</a>
+								</span>
+							</i>
+							<span> Электронная почта&nbsp;<a href="mailto:mail@macdac.ru">mail@macdac.ru</a>.</span>
+						</p>
+						<p>
+							<i>&copy; Все права на&nbsp;новости принадлежат соответствующим&nbsp;источникам, о&nbsp;чём указано на&nbsp;каждой странице этой же&nbsp;новости.</i>
+						</p>
+
+						<p><i><a href="http://www.andreyshipilov.com/">Андрей Шипилов</a>&nbsp;&mdash; идея, дизайн, вёрстка, программирование и&nbsp;поддержка.</i></p>
+					</footer>
+				</div>
+			</div>
+		{% endblock %}
+	</div>
+
+	<footer>
+
+	</footer>
+
+	{% analytics_async "UA-791865-6" %}
+</body>
+</html>{% endspaceless %}
