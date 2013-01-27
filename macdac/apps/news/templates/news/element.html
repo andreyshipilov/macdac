@@ -18,7 +18,7 @@
 				<h1>{{ object.title|safe }}</h1>
 			</header>
 
-			<div>{{ object.full|linebreaks|safe }}</div>
+			<div>{{ object.full|safe }}</div>
 
 			{% if object.link %}
 				<p id="source-link">
@@ -46,9 +46,11 @@
 			</div>
 		{% endif %}
 
-		<div id="vk_like"></div>
-		<script type="text/javascript">VK.Widgets.Like("vk_like", {type: "mini", height: 20});</script>
-		<a name="fb_share" href="http://www.facebook.com/sharer.php" style="float: left; margin-top: 2px;">Поделиться</a>
+		{% comment %}
+			<div id="vk_like"></div>
+			<script type="text/javascript">VK.Widgets.Like("vk_like", {type: "mini", height: 20});</script>
+			<a name="fb_share" href="http://www.facebook.com/sharer.php" style="float: left; margin-top: 2px;">Поделиться</a>
+		{% endcomment%}
 	</section>
 {% endblock %}
 
