@@ -121,6 +121,10 @@ INTERNAL_IPS = ('127.0.0.1',)
 COMPRESS_OUTPUT_DIR = 'min'
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter',]
 
+# Pagination
+PAGINATION_DEFAULT_PAGINATION = 10
+PAGINATION_DEFAULT_WINDOW = 2
+
 
 # Local settings
 try:
