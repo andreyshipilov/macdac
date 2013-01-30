@@ -60,6 +60,7 @@ h2 {
 }
 #page {
 	max-width: 1600px;
+	margin-bottom: 50px;
 }
 	#top {
 		margin: 25px 50px;
@@ -193,6 +194,16 @@ footer {
 		color: #fff;
 		border-top-left-radius: 3px;
 	}
+	#after-news-list {
+		padding-left: 50px;
+	}
+		#after-news-list h2 {
+			font-size: 2em;
+		}
+		#after-news-list .pagination {
+			font-size: 1.2em;
+			margin-bottom: 0;
+		}
 #sources {
 	padding-bottom: 2em;
 }
@@ -235,23 +246,28 @@ footer {
 
 
 /* Pagination */
-#pagination {
-	margin-bottom: 2em;
+.pagination {
+	margin: 0 0 2em -0.4em;
 }
-	#pagination a {
+	.pagination a {
 		font-style: italic;
+		border-radius: 3px;
 	}
-	#pagination  a:hover {
+	.pagination a:hover {
 		text-decoration:underline;
 	}
-	#pagination .page,
-	#pagination .next,
-	#pagination .prev {
-		padding: 0.2em 0.35em;
+	.pagination .page,
+	.pagination .next,
+	.pagination .prev {
+		padding: 0.2em 0.4em;
 	}
-	#pagination  .next {
+	.pagination .next {
 		margin-left: 0.5em;
 	}
-	#pagination  .prev {
+	.pagination .prev {
 		margin-right: 0.5em;
+	}
+	.pagination .current {
+		background-color: #ddd;
+		border-radius: 3px;
 	}

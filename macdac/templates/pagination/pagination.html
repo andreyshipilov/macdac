@@ -1,11 +1,9 @@
 {% if is_paginated %}
-	{% load i18n %}
-
 	<header>
 		<h2 class="clear-top">Страницы</h2>
 	</header>
 
-	<div id="pagination">
+	<div class="pagination">
 		{% if page_obj.has_previous %}
 			<a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">Ctrl&nbsp;&larr;</a>
 		{% endif %}
