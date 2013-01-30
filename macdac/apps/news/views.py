@@ -142,6 +142,12 @@ class ElementView(DateDetailView):
     month_format = "%B"
     template_name = "news/element.html"
 
+    def get_queryset(self, **kwargs):
+        qs = super(ElementView, self).get_queryset(**kwargs)
+        qs = qs.filter(source__slug=self.kwargs.get('source_slug'))
+
+        return qs
+
     def get_context_data(self, **kwargs):
         context = super(ElementView, self).get_context_data(**kwargs)
         current_source = get_object_or_404(Source,
