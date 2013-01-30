@@ -20,6 +20,7 @@ class ElementImageAdmin(AdminImageMixin, admin.ModelAdmin):
     list_display = ("element", "tag")
 admin.site.register(ElementImage, ElementImageAdmin)
 
+
 class ElementImageInline(admin.TabularInline):
     model = ElementImage
 
