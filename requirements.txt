@@ -9,3 +9,9 @@ django-robots==0.9.1
 google-analytics==0.2
 pytz==2012j
 sorl-thumbnail==11.12
+python-dateutil==2.1
+BeautifulSoup==3.2.1
+colorama==0.2.4
+feedparser==5.1.3
+tweepy==1.13
+pytils==0.2.3
