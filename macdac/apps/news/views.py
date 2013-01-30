@@ -185,7 +185,6 @@ def get_news(request):
     max_pk = request.POST.get('pk')
     max_date = get_object_or_404(Element, pk=max_pk).date
     qs = Element.get_available().filter(date__lte=max_date).exclude(pk=max_pk)[:settings.PAGINATION_DEFAULT_PAGINATION]
-    print qs
 
     return render(request, 'get_news.html', {
         'object_list': qs,
