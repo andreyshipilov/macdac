@@ -8,6 +8,7 @@
 {% block head_addon %}
 	<script src="http://userapi.com/js/api/openapi.js?22"></script>
 	<script>VK.init({apiId: 1957212, onlyWidgets: true});</script>
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 {% endblock %}
 
 
@@ -45,13 +46,34 @@
 				<script type="text/javascript">VK.Widgets.Comments("vk_comments", {limit: 100, width: "600"});</script>
 			</div>
 		{% endif %}
+	</section>
+{% endblock %}
 
-		{% comment %}
+
+{% block right_column %}
+	<div id="element-likes">
+		<div class="like-source">
 			<div id="vk_like"></div>
 			<script type="text/javascript">VK.Widgets.Like("vk_like", {type: "mini", height: 20});</script>
-			<a name="fb_share" href="http://www.facebook.com/sharer.php" style="float: left; margin-top: 2px;">Поделиться</a>
-		{% endcomment%}
-	</section>
+		</div>
+
+		<div class="like-source">
+			<div id="fb-root"></div>
+			<script src="http://connect.facebook.net/en_US/all.js#appId=331958003555865&amp;xfbml=1"></script>
+			<fb:like href="http://www.macdac.ru{{ object.get_absolute_url }}" layout="button_count" width="170" show_faces="false" font="arial"></fb:like>
+		</div>
+
+		<div class="like-source">
+			<a href="http://www.twitter.com/share" class="twitter-share-button" data-url="{{ object.get_short_url }}" data-text="{{ object.title }}" data-count="horizontal" data-via="macdac_ru">Tweet</a>
+			<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		</div>
+
+		<div class="like-source">
+			<g:plusone size="medium"></g:plusone>
+		</div>
+	</div>
+
+	{{ block.super }}
 {% endblock %}
 
 

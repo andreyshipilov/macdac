@@ -68,7 +68,7 @@ class Element(models.Model):
         })
 
     def get_short_url(self):
-        return "http://www.%s/%s" % (self.source.site.domain, self.pk)
+        return "http://%s/%s" % (self.source.site.domain, self.pk)
 
     def get_previous(self):
 	return self.get_previous_by_date(source=self.source)

@@ -138,6 +138,13 @@ footer {
 		right: 0;
 		border-bottom-left-radius: 3px;
 	}
+	#element-likes {
+		margin-bottom: 2em;
+	}
+		#element-likes .like-source {
+			clear: both;
+			margin-bottom: 3px;
+		}
 #news-list {
 }
 	#news-list .news-element-odd {
