@@ -23,10 +23,6 @@
 				</header>
 
 				<div>{{ object.full|safe }}</div>
-
-				{% if forloop.first %}
-					<div id="latest-news-indicator">Самая свежая новость</div>
-				{% endif %}
 			</article>
 		{% endfor %}
 	</section>
