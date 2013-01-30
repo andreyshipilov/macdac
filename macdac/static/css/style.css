@@ -101,6 +101,23 @@ footer {
 	color: #666;
 	font-style: italic;
 }
+	#twitter-link,
+	#rss-link {
+		color: #fff;
+		padding: 0 0.3em;
+		text-decoration: none;
+		border-radius: 3px;
+	}
+	#twitter-link:hover,
+	#rss-link:hover {
+		text-decoration: underline;
+	}
+	#twitter-link {
+		background-color: #3cf;
+	}
+	#rss-link {
+		background-color: orange;
+	}
 
 
 /* News Styles */
