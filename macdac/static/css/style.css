@@ -38,6 +38,7 @@ pre {
 	font: 0.9em Monaco, "Lucida Console", "Courier New", monospace;
 	line-height: 1.5em;
 	overflow: auto;
+	border-radius: 3px;
 }
 h1 {
 	font: normal 2em Helvetica, Tahoma;
