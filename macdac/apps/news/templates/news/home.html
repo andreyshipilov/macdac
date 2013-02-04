@@ -13,7 +13,7 @@
 						<a href="{{ object.get_absolute_url }}">{{ object.title|striptags|safe }}</a>
 					</h1>
 				</header>
-				<div>{{ object.full|safe }}</div>
+				<div>{{ object.get_full|safe }}</div>
 
 				{% if forloop.first %}
 					<div id="latest-news-indicator">Самая свежая новость</div>

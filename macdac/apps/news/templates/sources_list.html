@@ -12,7 +12,7 @@
 					{% else %}
 						<a href="{{ source.get_absolute_url }}">{{ source.title }}</a>
 					{% endif %}
-					<span class="count"> {{ source.count }}</span>
+					<span class="count"> {{ source.get_element_count }}</span>
 				</span>
 			</li>
 		{% endfor%}
@@ -31,7 +31,7 @@
 					{% else %}
 						<a href="{{ source.get_absolute_url }}">{{ source.title }}</a>
 					{% endif %}
-					<span class="count"> {{ source.count }}</span>
+					<span class="count"> {{ source.get_element_count }}</span>
 				</span>
 			</li>
 		{% endfor%}

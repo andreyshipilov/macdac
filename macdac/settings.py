@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'compressor',
     'google_analytics',
+    'sorl.thumbnail',
 )
 
 LOGGING = {

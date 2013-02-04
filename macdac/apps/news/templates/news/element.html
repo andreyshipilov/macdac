@@ -19,7 +19,7 @@
 				<h1>{{ object.title|safe }}</h1>
 			</header>
 
-			<div>{{ object.full|safe }}</div>
+			<div>{{ object.get_full|safe }}</div>
 
 			{% if object.link %}
 				<p id="source-link">

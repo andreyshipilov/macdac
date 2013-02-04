@@ -34,7 +34,7 @@ class ElementAdmin(admin.ModelAdmin):
 
     fieldsets = [
 	(None, {'fields': ('title', 'slug',)}),
-	('News texts', {'fields': ('full', 'allow_comments',)}),
+	('News texts', {'fields': ('full', 'full_prepared', 'allow_comments',)}),
 	('Source data', {'fields': ('link', 'source',)}),
 	('Date of source publishing', {'fields': ('date',), 'classes': 'collapse'}),
     ]
