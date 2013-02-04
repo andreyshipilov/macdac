@@ -33,9 +33,15 @@ class ElementAdmin(admin.ModelAdmin):
     inlines = (ElementImageInline,)
 
     fieldsets = [
-	(None, {'fields': ('title', 'slug',)}),
-	('News texts', {'fields': ('full', 'full_prepared', 'allow_comments',)}),
-	('Source data', {'fields': ('link', 'source',)}),
-	('Date of source publishing', {'fields': ('date',), 'classes': 'collapse'}),
+	(None, {'fields': ('title',
+			   'slug',)}),
+	('News texts', {'fields': ('full',
+				   'full_prepared',
+				   'allow_comments',)}),
+	('Source data', {'fields': ('link',
+				    'source',)}),
+	('Date of source publishing', {'fields': ('date',
+						  'date_start_publication'),
+	                               'classes': 'collapse'}),
     ]
 admin.site.register(Element, ElementAdmin)

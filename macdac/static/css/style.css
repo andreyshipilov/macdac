@@ -128,6 +128,26 @@ footer {
 		padding: 1px 25px 1px 50px;
 		background: url("/static/img/news-element-odd-bg.gif") repeat -33% 33% #e7e7e7;
 	}
+		/* Humane lists */
+		#news-element article ul li {
+			behavior:expression( !this.before && this.parentNode && this.parentNode.nodeName == 'UL' ? this.before = this.innerHTML = '&mdash;&nbsp;' + this.innerHTML : '' );
+			text-indent:expression( this.parentNode && this.parentNode.nodeName == 'UL' ? '-1.3em' : 0 );
+			margin: 0.5em 0;
+		}
+		#news-element article ul > li:before {
+			content: '\2014\a0';
+		}
+		#news-element article ul,
+		#news-element article ol {
+			margin: 0 0 1.2em 2.6em;
+			padding: 0;
+		}
+		#news-element article ul {
+			list-style-type: none;
+		}
+		#news-element article ol {
+			list-style-type: decimal;
+		}
 	#after-element {
 		padding: 25px 25px 25px 50px;
 	}
