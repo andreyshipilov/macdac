@@ -93,9 +93,10 @@ class Element(models.Model):
             text_tag, tag = i
 
             try:
-                img = self.images.only("image").get(tag=tag)
-                thumb = get_thumbnail(img.image, '500x500', quality=75,)
-		template = '<img src="%s" width="%s" height="%s" alt="%s">' % \
+                img = self.images.only("image", "width").get(tag=tag)
+                thumb = get_thumbnail(img.image, "%sx1000" % img.width,
+				      quality=80, upscale=False,)
+		template = '<img src="%s" width="%s" height="%s" alt="%s" />' % \
 	            (thumb.url, thumb.width, thumb.height, self.title)
                 text = text.replace(text_tag, template)
             except Exception, e:
@@ -115,6 +116,8 @@ class ElementImage(models.Model):
     tag = models.CharField(max_length=20, blank=True,)
     image = ImageField(blank=True, upload_to=lambda i, f: "macdac-news/%s%s" % \
                           (urandom(16).encode("hex"), splitext(f)[1].lower()),)
+    width = models.CharField(choices=(("300", "300 px"), ("600", "600 px")),
+			     default="300", max_length=3,)
 
     class Meta:
         verbose_name = "image"
