@@ -27,7 +27,7 @@ SITE_ID = 1
 USE_L10N = True
 
 MEDIA_ROOT = join(PROJECT_DIR, 'static/media')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/static/media/'
 STATIC_ROOT = join(PROJECT_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
