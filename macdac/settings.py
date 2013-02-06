@@ -126,6 +126,9 @@ COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter',]
 PAGINATION_DEFAULT_PAGINATION = 10
 PAGINATION_DEFAULT_WINDOW = 2
 
+# Robots
+ROBOTS_CACHE_TIMEOUT = 60 * 60 * 24
+
 
 # Local settings
 try:
