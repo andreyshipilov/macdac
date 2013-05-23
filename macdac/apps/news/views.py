@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib.syndication.views import Feed
+# from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse_lazy
 from django.http import Http404
 from django.shortcuts import render
@@ -12,17 +12,12 @@ from django.shortcuts import get_object_or_404
 from .models import Source, Element
 
 
-
-"""
-Main pages views.
-
-"""
 class HomeView(ArchiveIndexView):
     "Home page view."
 
     model = Element
     date_field = "date"
-    template_name="news/home.html"
+    template_name = "news/home.html"
     paginate_by = settings.PAGINATION_DEFAULT_PAGINATION
 
     def get_context_data(self, **kwargs):
@@ -37,7 +32,7 @@ class SourceView(ArchiveIndexView):
 
     model = Element
     date_field = "date"
-    template_name="news/source.html"
+    template_name = "news/source.html"
 
     def get_queryset(self, **kwargs):
         qs = super(SourceView, self).get_queryset(**kwargs)
@@ -62,7 +57,7 @@ class YearView(YearArchiveView):
 
     model = Element
     date_field = "date"
-    template_name="news/year.html"
+    template_name = "news/year.html"
     make_object_list = True
 
     def get_queryset(self, **kwargs):
@@ -88,7 +83,7 @@ class MonthView(MonthArchiveView):
     model = Element
     date_field = "date"
     month_format = "%B"
-    template_name="news/month.html"
+    template_name = "news/month.html"
 
     def get_queryset(self, **kwargs):
         qs = super(MonthView, self).get_queryset(**kwargs)
@@ -113,7 +108,7 @@ class DayView(DayArchiveView):
     model = Element
     date_field = "date"
     month_format = "%B"
-    template_name="news/day.html"
+    template_name = "news/day.html"
 
     def get_queryset(self, **kwargs):
         qs = super(DayView, self).get_queryset(**kwargs)
@@ -160,10 +155,6 @@ class ElementView(DateDetailView):
         return context
 
 
-"""
-Rest of news views.
-
-"""
 class RedirectFromShort(RedirectView):
     "Redirects from a given 'pk' in url to a full news element."
 
@@ -171,7 +162,7 @@ class RedirectFromShort(RedirectView):
     query_string = True
 
     def get_redirect_url(self, pk):
-	obj = get_object_or_404(Element.get_available(), pk=pk)
+        obj = get_object_or_404(Element.get_available(), pk=pk)
 
         return reverse_lazy('news_element', args=(), kwargs={
             'source_slug': obj.source.slug,
@@ -190,7 +181,8 @@ def get_news(request):
 
     max_pk = request.POST.get('pk')
     max_date = get_object_or_404(Element, pk=max_pk).date
-    qs = Element.get_available().filter(date__lte=max_date).exclude(pk=max_pk)[:settings.PAGINATION_DEFAULT_PAGINATION]
+    qs = Element.get_available().filter(date__lte=max_date) \
+        .exclude(pk=max_pk)[:settings.PAGINATION_DEFAULT_PAGINATION]
 
     return render(request, 'get_news.html', {
         'object_list': qs,

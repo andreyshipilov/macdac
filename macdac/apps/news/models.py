@@ -9,7 +9,6 @@ from cached_counter.counters import Counter
 from sorl.thumbnail import ImageField, get_thumbnail
 
 
-
 class Source(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
@@ -20,14 +19,14 @@ class Source(models.Model):
     count = Counter("get_element_count")
 
     class Meta:
-	ordering = ['-is_alive', 'title']
+        ordering = ['-is_alive', 'title']
 
     def __unicode__(self):
-	return self.title
+        return self.title
 
     @models.permalink
     def get_absolute_url(self):
-        return ('news_source', (), {'source_slug': self.slug,})
+        return ('news_source', (), {'source_slug': self.slug})
 
     def get_element_count(self):
         return Element.get_available(source_slug=self.slug).count()
@@ -36,21 +35,21 @@ class Source(models.Model):
 class Element(models.Model):
     date = models.DateTimeField(db_index=True)
     date_start_publication = models.DateTimeField(blank=True, null=True,
-						  db_index=True,)
+                                                  db_index=True,)
     title = models.CharField(max_length=200, db_index=True,)
     slug = models.SlugField(max_length=200, unique_for_date="date",)
     full = models.TextField(db_index=True,)
     full_prepared = models.TextField(blank=True,
-				     help_text="Will be overwritten on save.")
+                                     help_text="Will be overwritten on save.")
     link = models.URLField(max_length=500, blank=True,)
     source = models.ForeignKey(Source,)
     allow_comments = models.BooleanField(default=True,)
 
     class Meta:
-	ordering = ['-date']
+        ordering = ['-date']
 
     def __unicode__(self):
-	return self.title
+        return self.title
 
     @staticmethod
     def get_available(source_slug=None):
@@ -75,10 +74,10 @@ class Element(models.Model):
         return "http://%s/%s" % (self.source.site.domain, self.pk)
 
     def get_previous(self):
-	return self.get_previous_by_date(source=self.source)
+        return self.get_previous_by_date(source=self.source)
 
     def get_next(self):
-	return self.get_next_by_date(source=self.source)
+        return self.get_next_by_date(source=self.source)
 
     def get_full(self):
         return self.full_prepared if self.full_prepared else self.full
@@ -95,29 +94,30 @@ class Element(models.Model):
             try:
                 img = self.images.only("image", "width").get(tag=tag)
                 thumb = get_thumbnail(img.image, "%sx1000" % img.width,
-				      quality=80, upscale=False,)
-		template = '<img src="%s" width="%s" height="%s" alt="%s" />' % \
-	            (thumb.url, thumb.width, thumb.height, self.title)
+                                      quality=80, upscale=False,)
+                template = '<img src="%s" width="%s" height="%s" alt="%s" />' % \
+                           (thumb.url, thumb.width, thumb.height, self.title)
                 text = text.replace(text_tag, template)
             except Exception, e:
-		print e
+                print e
 
         return text
 
     def save(self, *args, **kwargs):
-	"Prepare the full text before every save."
+        "Prepare the full text before every save."
 
-	self.full_prepared = self.process_images_tags()
-	models.Model.save(self, *args, **kwargs)
+        self.full_prepared = self.process_images_tags()
+        models.Model.save(self, *args, **kwargs)
 
 
 class ElementImage(models.Model):
     element = models.ForeignKey(Element, related_name="images",)
     tag = models.CharField(max_length=20, blank=True,)
-    image = ImageField(blank=True, upload_to=lambda i, f: "macdac-news/%s%s" % \
-                          (urandom(16).encode("hex"), splitext(f)[1].lower()),)
+    image = ImageField(blank=True,
+                       upload_to=lambda i, f: "macdac-news/%s%s" % \
+                       (urandom(16).encode("hex"), splitext(f)[1].lower()),)
     width = models.CharField(choices=(("300", "300 px"), ("600", "600 px")),
-			     default="300", max_length=3,)
+                             default="300", max_length=3,)
 
     class Meta:
         verbose_name = "image"
