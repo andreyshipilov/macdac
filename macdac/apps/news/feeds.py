@@ -4,7 +4,6 @@ from django.views.generic.base import RedirectView
 from .models import Element
 
 
-
 class NewsFeed(Feed):
     link = '/'
 

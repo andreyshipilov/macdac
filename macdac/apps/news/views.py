@@ -1,5 +1,4 @@
 from django.conf import settings
-# from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse_lazy
 from django.http import Http404
 from django.shortcuts import render
@@ -17,6 +16,7 @@ class HomeView(ArchiveIndexView):
 
     model = Element
     date_field = "date"
+    allow_future = True
     template_name = "news/home.html"
     paginate_by = settings.PAGINATION_DEFAULT_PAGINATION
 
@@ -32,6 +32,7 @@ class SourceView(ArchiveIndexView):
 
     model = Element
     date_field = "date"
+    allow_future = True
     template_name = "news/source.html"
 
     def get_queryset(self, **kwargs):
@@ -57,6 +58,7 @@ class YearView(YearArchiveView):
 
     model = Element
     date_field = "date"
+    allow_future = True
     template_name = "news/year.html"
     make_object_list = True
 
@@ -83,6 +85,7 @@ class MonthView(MonthArchiveView):
     model = Element
     date_field = "date"
     month_format = "%B"
+    allow_future = True
     template_name = "news/month.html"
 
     def get_queryset(self, **kwargs):
@@ -108,6 +111,7 @@ class DayView(DayArchiveView):
     model = Element
     date_field = "date"
     month_format = "%B"
+    allow_future = True
     template_name = "news/day.html"
 
     def get_queryset(self, **kwargs):
@@ -135,6 +139,7 @@ class ElementView(DateDetailView):
     context_object_name = "object"
     date_field = "date"
     month_format = "%B"
+    allow_future = True
     template_name = "news/element.html"
 
     def get_queryset(self, **kwargs):

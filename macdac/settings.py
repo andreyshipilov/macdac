@@ -3,7 +3,6 @@ import sys
 from os.path import join, abspath, dirname
 
 
-
 PROJECT_DIR = dirname(__file__)
 
 # Paths to add on os.path
@@ -35,14 +34,14 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'compressor.finders.CompressorFinder',
 )
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -120,7 +119,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 # Compressor
 COMPRESS_OUTPUT_DIR = 'min'
-COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter',]
+COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter']
 
 # Pagination
 PAGINATION_DEFAULT_PAGINATION = 10

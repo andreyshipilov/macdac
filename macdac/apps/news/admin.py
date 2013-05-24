@@ -5,13 +5,13 @@ from sorl.thumbnail.admin import AdminImageMixin
 from .models import Source, Element, ElementImage
 
 
-
 class SourceAdmin(admin.ModelAdmin):
-    list_filter = ['is_alive', 'site',]
+    list_filter = ['is_alive', 'site']
     fieldsets = [
-	('Site dependency', {'fields': ('site',)}),
-	('Is a working site', {'fields': ('is_alive',)}),
-	('Source info', {'fields': ('title', 'slug', 'homepage', 'rss_link',)}),
+        ('Site dependency', {'fields': ('site',)}),
+        ('Is a working site', {'fields': ('is_alive',)}),
+        ('Source info', {'fields': ('title', 'slug', 'homepage',
+                                    'rss_link',)}),
     ]
 admin.site.register(Source, SourceAdmin)
 
@@ -27,21 +27,21 @@ class ElementImageInline(admin.TabularInline):
 
 class ElementAdmin(admin.ModelAdmin):
     list_display = ('title', 'date', 'source',)
-    list_filter = ['source',]
+    list_filter = ['source']
     date_hierarchy = 'date'
     prepopulated_fields = {'slug': ('title',)}
     inlines = (ElementImageInline,)
 
     fieldsets = [
-	(None, {'fields': ('title',
-			   'slug',)}),
-	('News texts', {'fields': ('full',
-				   'full_prepared',
-				   'allow_comments',)}),
-	('Source data', {'fields': ('link',
-				    'source',)}),
-	('Date of source publishing', {'fields': ('date',
-						  'date_start_publication'),
-	                               'classes': 'collapse'}),
+        (None, {'fields': ('title',
+                           'slug',)}),
+        ('News texts', {'fields': ('full',
+                                   'full_prepared',
+                                   'allow_comments',)}),
+        ('Source data', {'fields': ('link',
+                                    'source',)}),
+        ('Date of source publishing', {'fields': ('date',
+                                                  'date_start_publication'),
+                                       'classes': 'collapse'}),
     ]
 admin.site.register(Element, ElementAdmin)
